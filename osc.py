@@ -1,18 +1,4 @@
-import os
-import signal
-import time
-from pythonosc.udp_client import SimpleUDPClient
-import threading
-
-# Do not change unless you're using a different port or running on a different machine
-VRCHAT_IP = "127.0.0.1"
-VRCHAT_PORT = 9000
-
-client = SimpleUDPClient(VRCHAT_IP, VRCHAT_PORT)
-
-chatbox_text = "/chatbox/input"
-chatbox_visibility = "/chatbox/typing"
-
+######################################################################################
 # You can add more status messages here
 status = [
     "vrc osc",
@@ -20,6 +6,25 @@ status = [
     "Magic chat box lookalike on linux",
     "linux osc for vrchat",
 ]
+######################################################################################
+
+
+######################################################################################
+# Do not change unless you know what you're doing
+
+import os
+import signal
+import time
+from pythonosc.udp_client import SimpleUDPClient
+import threading
+
+VRCHAT_IP = "127.0.0.1"
+VRCHAT_PORT = 9000
+
+client = SimpleUDPClient(VRCHAT_IP, VRCHAT_PORT)
+
+chatbox_text = "/chatbox/input"
+chatbox_visibility = "/chatbox/typing"
 
 message_interval = 5
 
@@ -39,7 +44,7 @@ def get_system_time():
 def handle_user_input():
     global pause_script, custom_message
     while True:
-        user_input = input("Type a message and press Enter (or press 'ctrl + c' to quit): ")
+        user_input = input("Enter a message (or press 'ctrl + c' to quit): ")
 
         if not pause_script:
             pause_script = True
@@ -79,7 +84,7 @@ while True:
             last_sent_time = current_time
 
     if pause_script and custom_message:
-        print(f"Sending custom message: {custom_message}")
+        print(f"Message sent: {custom_message}")
 
         client.send_message(chatbox_visibility, True)
 
@@ -92,3 +97,5 @@ while True:
         custom_message = ""
 
     time.sleep(0.1)
+
+######################################################################################
