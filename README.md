@@ -6,6 +6,7 @@ Simple open-source Magic chat box lookalike on linux with the ability to send me
 ```
 Python
 python-osc
+evdev
 ```
 
 # Installation
