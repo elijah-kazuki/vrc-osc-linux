@@ -2,10 +2,17 @@
 
 Simple open-source Magic chat box lookalike on linux with the ability to send messages
 
+Instructions made for garuda linux but this should work on other linux distro's
+
 # Requirements
 ```
 Python
-python-osc
+sudo pacman -S python-osc
+```
+
+# If you're using the spotify version of the osc install the following
+```
+sudo pacman -S playerctl
 ```
 
 # Installation
